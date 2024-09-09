@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package university;
+
+option go_package = "/proto;proto";
+
+// Define a service for managing students
+service UniversityService {
+    rpc CreateStudent (CreateStudentRequest) returns (CreateStudentResponse);
+    rpc GetStudent (GetStudentRequest) returns (GetStudentResponse);
+    rpc ListStudents (ListStudentsRequest) returns (ListStudentsResponse);
+    rpc CreateCourse (CreateCourseRequest) returns (CreateCourseResponse);
+    rpc GetCourse (GetCourseRequest) returns (GetCourseResponse);
+    rpc ListCourses (ListCoursesRequest) returns (ListCoursesResponse);
+    rpc EnrollStudent (EnrollStudentRequest) returns (EnrollStudentResponse);
+}
+
+// Define messages for managing students
+message Student {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message Course {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message CreateStudentRequest {
+    string name = 1;
+    string email = 2;
+}
+
+message CreateStudentResponse {
+    Student student = 1;
+}
+
+message GetStudentRequest {
+    string id = 1;
+}
+
+message GetStudentResponse {
+    Student student = 1;
+}
+
+message ListStudentsRequest {}
+
+message ListStudentsResponse {
+    repeated Student students = 1;
+}
+
+message CreateCourseRequest {
+    string name = 1;
+    string description = 2;
+}
+
+message CreateCourseResponse {
+    Course course = 1;
+}
+
+message GetCourseRequest {
+    string id = 1;
+}
+
+message GetCourseResponse {
+    Course course = 1;
+}
+
+message ListCoursesRequest {}
+
+message ListCoursesResponse {
+    repeated Course courses = 1;
+}
+
+message EnrollStudentRequest {
+    string student_id = 1;
+    string course_id = 2;
+}
+
+message EnrollStudentResponse {
+    string message = 1;
+}
