@@ -6,7 +6,7 @@ import (
 	"log"
 	"net"
 
-	"university-management/proto"
+	"github.com/rishavABCD/UniversityManagement/proto"
 
 	"google.golang.org/grpc"
 )
